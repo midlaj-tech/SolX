@@ -149,6 +149,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Handle URL parameters or hash to open specific device directly (e.g. ?view=watch)
+  const urlParams = new URLSearchParams(window.location.search);
+  const requestedView = urlParams.get('view') || window.location.hash.replace('#', '');
+  if (requestedView) {
+    const targetTab = document.querySelector(`.tab-btn[data-target="view-${requestedView}"]`);
+    if (targetTab) {
+      targetTab.click();
+    }
+  }
+
   // ========================================================
   // 3. Location Selector
   // ========================================================

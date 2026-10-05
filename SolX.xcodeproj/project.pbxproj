@@ -232,7 +232,7 @@
 			name = SolXWatch;
 			productName = SolXWatch;
 			productReference = 020202020000000000000003 /* SolXWatch.app */;
-			productType = "com.apple.product-type.application.watchapp";
+			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
@@ -478,6 +478,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.midlaj.SolX.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
+				SUPPORTED_PLATFORMS = "watchsimulator watchos";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 10.0;
@@ -497,6 +498,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.midlaj.SolX.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
+				SUPPORTED_PLATFORMS = "watchsimulator watchos";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 10.0;
