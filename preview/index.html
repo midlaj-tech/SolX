@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>SolX — Golden-Hour Photography Companion (Native iOS & watchOS)</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="assets/app_icon.png">
+</head>
+<body class="theme-dark">
+  <div class="ambient-glow" aria-hidden="true"></div>
+
+  <!-- Showcase Header Controls -->
+  <header class="showcase-header">
+    <div class="header-container">
+      <!-- App Brand -->
+      <div class="brand-section">
+        <img src="assets/app_icon.png" alt="SolX Icon" class="brand-icon">
+        <div class="brand-title-group">
+          <h1>SolX <span class="brand-badge">iOS & watchOS</span></h1>
+          <p class="brand-sub">Golden-Hour Photography Companion • ±0.01° Solar Ephemeris</p>
+        </div>
+      </div>
+
+      <!-- Device Switcher Segmented Control -->
+      <div class="device-tabs" role="tablist">
+        <button class="tab-btn active" data-target="view-iphone">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+          iPhone 16 Pro
+        </button>
+        <button class="tab-btn" data-target="view-ipad">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+          iPad Pro
+        </button>
+        <button class="tab-btn" data-target="view-widgets">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          Widgets
+        </button>
+        <button class="tab-btn" data-target="view-watch">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="5" width="12" height="14" rx="3"></rect><path d="M10 2h4"></path><path d="M10 22h4"></path></svg>
+          Apple Watch
+        </button>
+      </div>
+
+      <!-- Action Controls -->
+      <div class="header-actions">
+        <!-- Location Picker -->
+        <select id="location-select" class="location-picker-select" title="Choose Location">
+          <option value="kannur" selected>Kannur Coast, Kerala (GPS)</option>
+          <option value="bigsur">Big Sur, California</option>
+          <option value="santorini">Santorini, Greece</option>
+          <option value="reykjavik">Reykjavik, Iceland</option>
+          <option value="tokyo">Tokyo, Japan</option>
+          <option value="browser">📍 Use My Exact GPS</option>
+        </select>
+
+        <!-- Live Camera Toggle -->
+        <button id="webcam-toggle-btn" class="quick-theme-pill" title="Toggle Real Webcam or Coastal Viewfinder">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+          <span>Webcam Feed</span>
+        </button>
+
+        <!-- Light / Dark Theme Switch (Required User Feature) -->
+        <div class="theme-switch-container">
+          <span>Dark</span>
+          <label class="ios-switch">
+            <input type="checkbox" id="theme-switch-input">
+            <span class="ios-slider"></span>
+          </label>
+          <span>Light</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Simulator Main Stage -->
+  <main class="simulator-stage">
+    
+    <!-- ========================================================
+         VIEW 1: iPhone 16 Pro (Exact Replica of Portfolio Screenshot)
+         ======================================================== -->
+    <div id="view-iphone" class="device-view active">
+      <div class="iphone-frame">
+        <div class="iphone-screen">
+          
+          <!-- Shutter Flash Overlay -->
+          <div id="shutter-flash" class="shutter-flash-overlay"></div>
+
+          <!-- Viewfinder Background Media -->
+          <div class="viewfinder-media-layer">
+            <img src="assets/viewfinder_coastal.jpg" alt="Coastal Viewfinder" id="viewfinder-img" class="viewfinder-img">
+            <video id="viewfinder-video" class="viewfinder-video" autoplay playsinline muted></video>
+            <div id="sky-overlay" class="viewfinder-sky-overlay"></div>
+          </div>
+
+          <!-- Composition Grid Overlay -->
+          <div id="comp-grid" class="composition-grid-overlay">
+            <div class="grid-line-v1"></div>
+            <div class="grid-line-v2"></div>
+            <div class="grid-line-h1"></div>
+            <div class="grid-line-h2"></div>
+          </div>
+
+          <!-- Top Status Bar & Dynamic Island -->
+          <div class="iphone-status-bar">
+            <span id="status-clock">18:42</span>
+            <div class="dynamic-island">
+              <span class="island-camera"></span>
+              <span class="island-sensor"></span>
+            </div>
+            <div style="display: flex; gap: 6px; align-items: center;">
+              <span style="font-size: 11px;">5G</span>
+              <svg width="18" height="10" viewBox="0 0 24 12" fill="currentColor"><rect x="1" y="1" width="19" height="10" rx="3" stroke="currentColor" stroke-width="2" fill="none"></rect><rect x="3" y="3" width="13" height="6" rx="1.5"></rect><path d="M22 4v4"></path></svg>
+            </div>
+          </div>
+
+          <!-- Screen Header Row -->
+          <div class="solx-viewfinder-header">
+            <button id="phone-theme-toggle" class="quick-theme-pill">
+              <span id="phone-theme-icon">🌙</span>
+              <span id="phone-theme-text">DARK</span>
+            </button>
+
+            <div class="center-title-group">
+              <h2>SolX • Golden Hour</h2>
+              <p id="phone-location-name">Kannur Coast, Kerala</p>
+            </div>
+
+            <div class="gps-badge-pill">
+              <span class="gps-dot"></span>
+              <span id="gps-status-text">GPS</span>
+            </div>
+          </div>
+
+          <!-- Middle Layer: Floating Cards & Dock -->
+          <div class="hud-middle-layer">
+            
+            <!-- 1. Floating Sun Angle Compass Glass Card -->
+            <div class="sun-angle-compass-card">
+              <div class="card-specular-highlight"></div>
+              <div class="card-eyebrow-title">SUN ANGLE<br>COMPASS</div>
+
+              <!-- Circular Compass Dial -->
+              <div class="compass-dial-wrap">
+                <div class="dial-circle-base"></div>
+                <span class="cardinal-label cardinal-n">N</span>
+                <span class="cardinal-label cardinal-s">S</span>
+                <span class="cardinal-label cardinal-w">W</span>
+                <span class="cardinal-label cardinal-e">E</span>
+
+                <!-- Golden Sun Orbit Path Arc -->
+                <svg class="solar-arc-svg" viewBox="0 0 100 100">
+                  <path id="orbit-arc-path" d="M 20 60 A 38 38 0 1 1 80 60" fill="none" stroke="url(#goldArcGrad)" stroke-width="3.5" stroke-linecap="round"/>
+                  <defs>
+                    <linearGradient id="goldArcGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#f8b426" stop-opacity="0.2"/>
+                      <stop offset="50%" stop-color="#f8b426" stop-opacity="1"/>
+                      <stop offset="100%" stop-color="#ffe48a" stop-opacity="0.3"/>
+                    </linearGradient>
+                  </defs>
+                </svg>
+
+                <!-- Sun Azimuth Marker Pin -->
+                <div id="sun-beacon" class="sun-azimuth-beacon" style="left: 14px; top: 50%;">
+                  <div class="sun-beacon-core"></div>
+                </div>
+
+                <!-- Center Azimuth Readout Badge -->
+                <div class="compass-center-pill">
+                  <span style="color: #f8b426;">⊙</span>
+                  <span id="center-azimuth-val">W 274° W</span>
+                </div>
+              </div>
+
+              <!-- Telemetry Information Below Dial -->
+              <div class="compass-telemetry-block">
+                <div id="telemetry-sun-alt" class="telemetry-row-highlight">Sun: 274° W, Alt: +4°</div>
+                <div id="telemetry-sunset" class="telemetry-row-sub">Sunset: 18:49</div>
+                <div id="telemetry-sunrise" class="telemetry-row-sub">Sunrise: 06:14</div>
+                <div class="next-gh-pill">Next: Golden Hour (<span id="telemetry-countdown">5m</span>)</div>
+              </div>
+            </div>
+
+            <!-- 2. Floating Ephemeris Timeline Glass Card & Camera Dock -->
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              
+              <div class="ephemeris-timeline-card">
+                <div class="card-specular-highlight"></div>
+                
+                <div class="ephemeris-header-row">
+                  <span class="card-eyebrow-title" style="margin-bottom: 0;">EPHEMERIS TIMELINE</span>
+                  <button id="reset-live-btn" class="live-reset-btn">RESET LIVE</button>
+                </div>
+
+                <!-- Interactive Time Travel Slider Track -->
+                <div id="timeline-slider" class="timeline-slider-track">
+                  <div class="slider-rail"></div>
+                  <span class="slider-endpoint-icon endpoint-left">🌙</span>
+                  <span class="slider-endpoint-icon endpoint-right">☀️</span>
+                  <div id="slider-thumb" class="solar-scrubber-thumb" style="left: 77%;"></div>
+                </div>
+
+                <!-- Lighting Phase Spectrum Bar -->
+                <div class="ephemeris-gradient-strip">
+                  <div class="strip-segment segment-afternoon" title="Afternoon"></div>
+                  <div class="strip-segment segment-golden" title="Golden Hour"></div>
+                  <div class="strip-segment segment-blue" title="Blue Hour"></div>
+                  <div class="strip-segment segment-night" title="Night"></div>
+                </div>
+
+                <!-- 4 Phase Time Columns -->
+                <div class="ephemeris-phase-columns">
+                  <div class="phase-column">
+                    <span class="phase-title">Afternoon</span>
+                    <span id="col-time-afternoon" class="phase-time">17:30</span>
+                  </div>
+                  <div class="phase-column active-golden">
+                    <span class="phase-title">Golden Hour</span>
+                    <span id="col-time-golden" class="phase-time">18:35–18:49</span>
+                  </div>
+                  <div class="phase-column active-blue">
+                    <span class="phase-title">Blue Hour</span>
+                    <span id="col-time-blue" class="phase-time">18:55–19:15</span>
+                  </div>
+                  <div class="phase-column">
+                    <span class="phase-title">Night</span>
+                    <span id="col-time-night" class="phase-time">20:00</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 3. Bottom Camera Controls Floating Dock -->
+              <div class="camera-controls-dock">
+                <!-- Grid Toggle -->
+                <button id="btn-grid-toggle" class="cam-tool-btn" title="Toggle Composition Grid">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line><line x1="15" y1="3" x2="15" y2="21"></line><line x1="3" y1="9" x2="21" y2="9"></line><line x1="3" y1="15" x2="21" y2="15"></line></svg>
+                </button>
+
+                <!-- Torch Toggle -->
+                <button id="btn-torch-toggle" class="cam-tool-btn" title="Flashlight Torch">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                </button>
+
+                <!-- Center Shutter Button -->
+                <button id="btn-shutter" class="shutter-btn" title="Capture Golden Hour Photo">
+                  <div class="shutter-core"></div>
+                </button>
+
+                <!-- Solar Trajectory Map -->
+                <button id="btn-map-modal" class="cam-tool-btn" title="Open Solar Sky Arc Map">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon><line x1="8" y1="2" x2="8" y2="18"></line><line x1="16" y1="6" x2="16" y2="22"></line></svg>
+                </button>
+
+                <!-- Settings & Presets -->
+                <button id="btn-settings-modal" class="cam-tool-btn" title="Settings & Presets">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- Bottom Home Indicator -->
+          <div class="iphone-home-indicator"></div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================================
+         VIEW 2: iPad Pro 13" (Adaptive Split Console)
+         ======================================================== -->
+    <div id="view-ipad" class="device-view">
+      <div class="ipad-frame">
+        <div class="ipad-screen">
+          
+          <!-- Left: High-Res Viewfinder & Camera Controls -->
+          <div class="ipad-viewfinder-col">
+            <div class="viewfinder-media-layer">
+              <img src="assets/viewfinder_coastal.jpg" alt="Coastal Viewfinder" class="viewfinder-img">
+              <div class="viewfinder-sky-overlay"></div>
+            </div>
+
+            <!-- Top Pill -->
+            <div style="position: relative; z-index: 10; padding: 20px; display: flex; justify-content: space-between;">
+              <div style="background: rgba(0, 0, 0, 0.45); backdrop-filter: blur(16px); padding: 8px 16px; border-radius: 14px; border: 1px solid rgba(255, 255, 255, 0.15);">
+                <div style="font-weight: 700; font-size: 16px; color: #fff;">SolX • iPadOS Console</div>
+                <div style="font-size: 12px; color: rgba(255, 255, 255, 0.7);" id="ipad-location-label">Kannur Coast, Kerala</div>
+              </div>
+            </div>
+
+            <!-- Bottom Floating Toolbar -->
+            <div style="position: relative; z-index: 10; padding: 20px; display: flex; justify-content: center;">
+              <div class="camera-controls-dock" style="width: 380px; margin-top: 0;">
+                <button class="cam-tool-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line><line x1="15" y1="3" x2="15" y2="21"></line></svg></button>
+                <button class="cam-tool-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg></button>
+                <button class="shutter-btn"><div class="shutter-core"></div></button>
+                <button class="cam-tool-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon></svg></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Solar Telemetry & Ephemeris Console -->
+          <div class="ipad-telemetry-col">
+            <h3 style="font-size: 18px; font-weight: 700;">Solar Telemetry</h3>
+            
+            <!-- Compass Dial Embed -->
+            <div style="display: flex; justify-content: center; padding: 10px 0;">
+              <div class="sun-angle-compass-card" style="width: 100%;">
+                <div class="card-specular-highlight"></div>
+                <div class="card-eyebrow-title">SUN ANGLE COMPASS</div>
+                <div class="compass-dial-wrap">
+                  <div class="dial-circle-base"></div>
+                  <span class="cardinal-label cardinal-n">N</span>
+                  <span class="cardinal-label cardinal-s">S</span>
+                  <span class="cardinal-label cardinal-w">W</span>
+                  <span class="cardinal-label cardinal-e">E</span>
+                  <div class="sun-azimuth-beacon" style="left: 14px; top: 50%;"><div class="sun-beacon-core"></div></div>
+                  <div class="compass-center-pill"><span id="ipad-center-azimuth">W 274° W</span></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Ephemeris Breakdown -->
+            <div class="ipad-metric-grid">
+              <div class="ipad-metric-box">
+                <div class="ipad-metric-title">Solar Altitude</div>
+                <div id="ipad-alt-val" class="ipad-metric-val">+4°</div>
+                <div class="ipad-metric-sub">Elevation Angle</div>
+              </div>
+              <div class="ipad-metric-box">
+                <div class="ipad-metric-title">Next Golden Hour</div>
+                <div id="ipad-gh-val" class="ipad-metric-val" style="color: var(--gold-primary);">5m</div>
+                <div class="ipad-metric-sub">Countdown</div>
+              </div>
+              <div class="ipad-metric-box">
+                <div class="ipad-metric-title">Sunset</div>
+                <div id="ipad-sunset-val" class="ipad-metric-val">18:49</div>
+                <div class="ipad-metric-sub">Dusk Horizon</div>
+              </div>
+              <div class="ipad-metric-box">
+                <div class="ipad-metric-title">Sunrise</div>
+                <div id="ipad-sunrise-val" class="ipad-metric-val">06:14</div>
+                <div class="ipad-metric-sub">Dawn Horizon</div>
+              </div>
+            </div>
+
+            <div style="background: rgba(255, 255, 255, 0.05); padding: 14px; border-radius: 14px; border: 1px solid rgba(255, 255, 255, 0.1);">
+              <div style="font-size: 11px; font-weight: 700; color: var(--gold-primary); margin-bottom: 6px;">LOCAL EPHEMERIS MATH</div>
+              <p style="font-size: 11px; color: var(--hud-subtext); line-height: 1.4;">
+                Pure spherical trigonometry executing client-side. Zero cloud latency. Calculates real-time solar declination, true solar time, and altitude transitions.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================================
+         VIEW 3: WidgetKit Showcase (Small, Medium, Lock Screen)
+         ======================================================== -->
+    <div id="view-widgets" class="device-view">
+      <div class="widgets-showcase-grid">
+        
+        <!-- Small Widget -->
+        <div class="widget-showcase-card">
+          <div class="widget-showcase-title">
+            <span>Home Screen Widget (Small)</span>
+          </div>
+          
+          <div class="widget-system-small">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-size: 10px; font-weight: 800; color: #f8b426; display: flex; align-items: center; gap: 4px;">
+                ☀️ SOLX
+              </span>
+              <span id="w-small-alt" style="font-size: 11px; font-weight: 700; font-family: monospace; color: #f8b426;">+4°</span>
+            </div>
+
+            <div>
+              <div style="font-size: 9px; font-weight: 700; opacity: 0.65; letter-spacing: 0.8px;">NEXT GOLDEN HOUR</div>
+              <div id="w-small-countdown" style="font-size: 26px; font-weight: 800; margin: 2px 0;">00:48:15</div>
+              <div id="w-small-window" style="font-size: 10px; font-family: monospace; color: #f8b426;">18:35–18:49</div>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; font-size: 9px; opacity: 0.6;">
+              <span id="w-small-location">Kannur Coast</span>
+              <span>GPS Live</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Medium Widget -->
+        <div class="widget-showcase-card">
+          <div class="widget-showcase-title">
+            <span>Home Screen Widget (Medium)</span>
+          </div>
+
+          <div class="widget-system-medium">
+            <!-- Left -->
+            <div style="flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
+              <div style="font-size: 10px; font-weight: 800; color: #f8b426;">SOLX GOLDEN HOUR</div>
+              <div>
+                <div style="font-size: 8px; font-weight: 700; opacity: 0.6;">STARTS IN</div>
+                <div id="w-med-countdown" style="font-size: 28px; font-weight: 800;">48m 15s</div>
+                <div id="w-med-window" style="font-size: 10px; color: #f8b426; font-family: monospace;">Window: 18:35–18:49</div>
+              </div>
+              <div style="font-size: 9px; opacity: 0.6;">Golden Hour Photography Companion</div>
+            </div>
+
+            <div style="width: 1px; background: rgba(255, 255, 255, 0.15);"></div>
+
+            <!-- Right -->
+            <div style="flex: 1; display: flex; flex-direction: column; justify-content: space-between; font-size: 10px;">
+              <div style="display: flex; justify-content: space-between; font-weight: 700;">
+                <span id="w-med-location">Kannur Coast</span>
+                <span style="color: #22c55e;">GPS</span>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 4px;">
+                <div style="display: flex; justify-content: space-between;">
+                  <span style="opacity: 0.6;">Sun Bearing:</span>
+                  <span id="w-med-bearing" style="font-weight: 700; font-family: monospace;">274° W</span>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                  <span style="opacity: 0.6;">Elevation:</span>
+                  <span id="w-med-alt" style="font-weight: 700; font-family: monospace;">+4°</span>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                  <span style="opacity: 0.6;">Sunset:</span>
+                  <span id="w-med-sunset" style="font-weight: 700; font-family: monospace;">18:49</span>
+                </div>
+              </div>
+              <div style="height: 4px; background: linear-gradient(90deg, #f5c542, #f8b426, #3878e0, #0c1222); border-radius: 2px;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lock Screen Circular Accessory -->
+        <div class="widget-showcase-card">
+          <div class="widget-showcase-title">
+            <span>Lock Screen & StandBy Accessories</span>
+          </div>
+
+          <div style="display: flex; gap: 16px; align-items: center;">
+            <div class="widget-accessory-circular">
+              <span style="font-size: 13px;">☀️</span>
+              <span id="w-lock-circular" style="font-size: 12px; font-weight: 800;">48m</span>
+            </div>
+
+            <div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(14px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 16px; padding: 10px 14px; color: #fff;">
+              <div style="font-size: 10px; font-weight: 700; opacity: 0.8;">SolX Golden Hour</div>
+              <div id="w-lock-rect-countdown" style="font-size: 18px; font-weight: 800;">48m 15s</div>
+              <div id="w-lock-rect-window" style="font-size: 9px; opacity: 0.7;">18:35–18:49 • Alt +4°</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ========================================================
+         VIEW 4: Apple Watch Ultra (Lightweight Companion)
+         ======================================================== -->
+    <div id="view-watch" class="device-view">
+      <div class="watch-simulator-wrap">
+        <div class="watch-case">
+          <!-- Interactive Digital Crown -->
+          <div id="watch-crown" class="digital-crown" title="Scroll / Drag Digital Crown to Preview Daylight Hours"></div>
+
+          <div class="watch-screen">
+            <!-- Header Pill -->
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-size: 11px; font-weight: 800; color: #f8b426; display: flex; align-items: center; gap: 4px;">
+                <span style="width: 6px; height: 6px; border-radius: 50%; background: #f8b426;"></span>
+                <span id="watch-phase-badge">Golden Hour</span>
+              </span>
+              <span id="watch-crown-preview-tag" style="font-size: 9px; font-weight: 700; color: #ffd154;">LIVE</span>
+            </div>
+
+            <!-- Central Solar Elevation Circular Gauge -->
+            <div class="watch-gauge-wrap">
+              <svg class="watch-gauge-svg" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="42" stroke="rgba(255, 255, 255, 0.12)" stroke-width="6" fill="none"/>
+                <circle id="watch-gauge-progress" cx="50" cy="50" r="42" stroke="url(#watchGoldGrad)" stroke-width="6" fill="none" stroke-linecap="round" stroke-dasharray="264" stroke-dashoffset="60" transform="rotate(-90 50 50)"/>
+                <defs>
+                  <linearGradient id="watchGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#f8b426"/>
+                    <stop offset="100%" stop-color="#ffdf70"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+
+              <div style="position: relative; z-index: 2; text-align: center;">
+                <div style="font-size: 8px; font-weight: 800; color: #f8b426; letter-spacing: 0.5px;">GOLDEN IN</div>
+                <div id="watch-countdown-text" style="font-size: 20px; font-weight: 800; line-height: 1.1;">48m 15s</div>
+                <div id="watch-altitude-text" style="font-size: 10px; opacity: 0.7; font-family: monospace;">+4°</div>
+              </div>
+            </div>
+
+            <!-- Wrist Telemetry Strip -->
+            <div style="display: flex; gap: 6px;">
+              <div style="flex: 1; background: rgba(255, 255, 255, 0.08); padding: 5px 8px; border-radius: 8px;">
+                <div style="font-size: 8px; opacity: 0.6;">Bearing</div>
+                <div id="watch-bearing-text" style="font-size: 11px; font-weight: 700; font-family: monospace;">274° W</div>
+              </div>
+              <div style="flex: 1; background: rgba(255, 255, 255, 0.08); padding: 5px 8px; border-radius: 8px;">
+                <div style="font-size: 8px; opacity: 0.6;">Sunset</div>
+                <div id="watch-sunset-text" style="font-size: 11px; font-weight: 700; font-family: monospace; color: #f8b426;">18:49</div>
+              </div>
+            </div>
+
+            <div style="text-align: center; font-size: 8.5px; opacity: 0.45;">
+              Rotate Digital Crown to preview
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Modal 1: Solar Trajectory Arc Map -->
+  <div id="modal-trajectory" class="glass-modal-sheet">
+    <div class="modal-content-card">
+      <div class="modal-header-row">
+        <h3 style="font-size: 18px; font-weight: 700;">Solar Sky Dome Arc</h3>
+        <button id="close-trajectory-btn" class="modal-close-btn">✕</button>
+      </div>
+
+      <!-- Sky Dome Arc SVG -->
+      <div style="background: linear-gradient(180deg, #0d1527 0%, #1a2a4f 60%, rgba(248, 180, 38, 0.25) 100%); border-radius: 16px; padding: 14px; position: relative;">
+        <svg viewBox="0 0 400 180" style="width: 100%; height: auto;">
+          <!-- Horizon line -->
+          <line x1="20" y1="140" x2="380" y2="140" stroke="rgba(255, 255, 255, 0.4)" stroke-width="1.5"/>
+          <text x="25" y="132" fill="rgba(255, 255, 255, 0.6)" font-size="9" font-weight="700">HORIZON (0°)</text>
+
+          <!-- Golden Hour Band (-4° to +6°) -->
+          <rect x="20" y="125" width="360" height="25" fill="rgba(248, 180, 38, 0.18)"/>
+          <text x="200" y="138" text-anchor="middle" fill="#f8b426" font-size="9" font-weight="700">GOLDEN HOUR BAND (-4° to +6°)</text>
+
+          <!-- Parabolic Sun Trajectory Curve -->
+          <path d="M 40 145 Q 200 30 360 145" fill="none" stroke="url(#modalArcGrad)" stroke-width="3" stroke-linecap="round"/>
+          <defs>
+            <linearGradient id="modalArcGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#f8b426"/>
+              <stop offset="50%" stop-color="#ffe48a"/>
+              <stop offset="100%" stop-color="#f8b426"/>
+            </linearGradient>
+          </defs>
+
+          <!-- Dynamic Sun Position on Arc -->
+          <circle id="modal-sun-orb" cx="300" cy="115" r="7" fill="#fff" stroke="#f8b426" stroke-width="2.5"/>
+        </svg>
+      </div>
+
+      <div style="margin-top: 16px; display: flex; flex-direction: column; gap: 8px;">
+        <div style="display: flex; justify-content: space-between; font-size: 13px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 6px;">
+          <span>Morning Golden Hour</span>
+          <span id="modal-m-golden" style="font-family: monospace; color: #f8b426; font-weight: 700;">06:14–06:38</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; font-size: 13px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 6px;">
+          <span>Solar Noon Peak</span>
+          <span id="modal-noon" style="font-family: monospace; font-weight: 700;">12:15</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; font-size: 13px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 6px;">
+          <span>Evening Golden Hour</span>
+          <span id="modal-e-golden" style="font-family: monospace; color: #f8b426; font-weight: 700;">18:35–18:49</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; font-size: 13px;">
+          <span>Evening Blue Hour</span>
+          <span id="modal-e-blue" style="font-family: monospace; color: #3878e0; font-weight: 700;">18:55–19:15</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 2: Settings Sheet -->
+  <div id="modal-settings" class="glass-modal-sheet">
+    <div class="modal-content-card">
+      <div class="modal-header-row">
+        <h3 style="font-size: 18px; font-weight: 700;">SolX Settings</h3>
+        <button id="close-settings-btn" class="modal-close-btn">✕</button>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <!-- Theme Toggle -->
+        <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(255, 255, 255, 0.05); padding: 12px 16px; border-radius: 14px;">
+          <div>
+            <div style="font-weight: 600; font-size: 14px;">Appearance Theme</div>
+            <div style="font-size: 11px; opacity: 0.65;">Switch between Liquid Dark & Crystal Light</div>
+          </div>
+          <label class="ios-switch">
+            <input type="checkbox" id="modal-theme-toggle">
+            <span class="ios-slider"></span>
+          </label>
+        </div>
+
+        <!-- Composition Grid Mode -->
+        <div style="background: rgba(255, 255, 255, 0.05); padding: 12px 16px; border-radius: 14px;">
+          <div style="font-weight: 600; font-size: 14px; margin-bottom: 6px;">Composition Grid</div>
+          <div style="display: flex; gap: 8px;">
+            <button class="quick-theme-pill" data-grid="ruleOfThirds">Rule of Thirds</button>
+            <button class="quick-theme-pill" data-grid="goldenRatio">Golden Ratio</button>
+            <button class="quick-theme-pill" data-grid="off">Off</button>
+          </div>
+        </div>
+
+        <!-- Ephemeris Engine Specs -->
+        <div style="background: rgba(255, 255, 255, 0.05); padding: 12px 16px; border-radius: 14px; font-size: 12px;">
+          <div style="font-weight: 700; color: #f8b426; margin-bottom: 6px;">CORE ARCHITECTURE</div>
+          <p style="opacity: 0.8; line-height: 1.4;">
+            SolX executes on-device astronomical spherical trigonometry algorithms calculating exact solar altitude and azimuth trajectories without network reliance.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="solar-engine.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,549 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		010101010000000100000001 /* SolarModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020202020000000100000001 /* SolarModels.swift */; };
+		010101010000000100000002 /* SolarMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020202020000000100000002 /* SolarMath.swift */; };
+		010101010000000100000012 /* HapticService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020202020000000100000013 /* HapticService.swift */; };
+		010101010000000100000003 /* SolXApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020202020000000100000003 /* SolXApp.swift */; };
+		010101010000000100000004 /* SolarEphemerisEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020202020000000100000004 /* SolarEphemerisEngine.swift */; };
+		010101010000000100000005 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020202020000000100000005 /* LocationManager.swift */; };
+		010101010000000100000006 /* CameraService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020202020000000100000006 /* CameraService.swift */; };
+		010101010000000100000007 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020202020000000100000007 /* ThemeManager.swift */; };
+		010101010000000100000008 /* MainCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020202020000000100000008 /* MainCameraView.swift */; };
+		010101010000000100000009 /* SunAngleCompassCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020202020000000100000009 /* SunAngleCompassCard.swift */; };
+		01010101000000010000000A /* EphemerisTimelineCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02020202000000010000000A /* EphemerisTimelineCard.swift */; };
+		01010101000000010000000B /* CameraControlsToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02020202000000010000000B /* CameraControlsToolbar.swift */; };
+		01010101000000010000000C /* CameraViewfinderRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02020202000000010000000C /* CameraViewfinderRepresentable.swift */; };
+		01010101000000010000000D /* CompositionGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02020202000000010000000D /* CompositionGridView.swift */; };
+		01010101000000010000000E /* SolarTrajectoryMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02020202000000010000000E /* SolarTrajectoryMapView.swift */; };
+		01010101000000010000000F /* SettingsSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02020202000000010000000F /* SettingsSheetView.swift */; };
+		010101010000000100000010 /* iPadLayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020202020000000100000010 /* iPadLayoutView.swift */; };
+		010101010000000100000011 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 020202020000000100000011 /* Assets.xcassets */; };
+		
+		/* Widget Target */
+		010101010000000200000001 /* SolarModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020202020000000100000001 /* SolarModels.swift */; };
+		010101010000000200000002 /* SolarMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020202020000000100000002 /* SolarMath.swift */; };
+		010101010000000200000003 /* SolXWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020202020000000200000001 /* SolXWidgetBundle.swift */; };
+		010101010000000200000004 /* SolXCountdownWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020202020000000200000002 /* SolXCountdownWidget.swift */; };
+		010101010000000200000005 /* WidgetViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020202020000000200000003 /* WidgetViews.swift */; };
+
+		/* Watch Target */
+		010101010000000300000001 /* SolarModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020202020000000100000001 /* SolarModels.swift */; };
+		010101010000000300000002 /* SolarMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020202020000000100000002 /* SolarMath.swift */; };
+		010101010000000300000003 /* SolXWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020202020000000300000001 /* SolXWatchApp.swift */; };
+		010101010000000300000004 /* WatchMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020202020000000300000002 /* WatchMainView.swift */; };
+		010101010000000300000005 /* WatchComplications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020202020000000300000003 /* WatchComplications.swift */; };
+		010101010000000300000006 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 020202020000000300000004 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		020202020000000000000001 /* SolX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SolX.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		020202020000000000000002 /* SolXWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SolXWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		020202020000000000000003 /* SolXWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SolXWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		
+		020202020000000100000001 /* SolarModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolarModels.swift; sourceTree = "<group>"; };
+		020202020000000100000002 /* SolarMath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolarMath.swift; sourceTree = "<group>"; };
+		020202020000000100000013 /* HapticService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticService.swift; sourceTree = "<group>"; };
+		020202020000000100000003 /* SolXApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolXApp.swift; sourceTree = "<group>"; };
+		020202020000000100000004 /* SolarEphemerisEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolarEphemerisEngine.swift; sourceTree = "<group>"; };
+		020202020000000100000005 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		020202020000000100000006 /* CameraService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraService.swift; sourceTree = "<group>"; };
+		020202020000000100000007 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
+		020202020000000100000008 /* MainCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCameraView.swift; sourceTree = "<group>"; };
+		020202020000000100000009 /* SunAngleCompassCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunAngleCompassCard.swift; sourceTree = "<group>"; };
+		02020202000000010000000A /* EphemerisTimelineCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EphemerisTimelineCard.swift; sourceTree = "<group>"; };
+		02020202000000010000000B /* CameraControlsToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraControlsToolbar.swift; sourceTree = "<group>"; };
+		02020202000000010000000C /* CameraViewfinderRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewfinderRepresentable.swift; sourceTree = "<group>"; };
+		02020202000000010000000D /* CompositionGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionGridView.swift; sourceTree = "<group>"; };
+		02020202000000010000000E /* SolarTrajectoryMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolarTrajectoryMapView.swift; sourceTree = "<group>"; };
+		02020202000000010000000F /* SettingsSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSheetView.swift; sourceTree = "<group>"; };
+		020202020000000100000010 /* iPadLayoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iPadLayoutView.swift; sourceTree = "<group>"; };
+		020202020000000100000011 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		020202020000000100000012 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		
+		020202020000000200000001 /* SolXWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolXWidgetBundle.swift; sourceTree = "<group>"; };
+		020202020000000200000002 /* SolXCountdownWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolXCountdownWidget.swift; sourceTree = "<group>"; };
+		020202020000000200000003 /* WidgetViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetViews.swift; sourceTree = "<group>"; };
+		020202020000000200000004 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+
+		020202020000000300000001 /* SolXWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolXWatchApp.swift; sourceTree = "<group>"; };
+		020202020000000300000002 /* WatchMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchMainView.swift; sourceTree = "<group>"; };
+		020202020000000300000003 /* WatchComplications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchComplications.swift; sourceTree = "<group>"; };
+		020202020000000300000004 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		020202020000000300000005 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		030303030000000100000000 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		030303030000000200000000 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		030303030000000300000000 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		040404040000000000000000 /* Main Group */ = {
+			isa = PBXGroup;
+			children = (
+				040404040000000000000001 /* Shared */,
+				040404040000000000000002 /* SolX */,
+				040404040000000000000003 /* SolXWidget */,
+				040404040000000000000004 /* SolXWatch */,
+				040404040000000000000005 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		040404040000000000000001 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				020202020000000100000001 /* SolarModels.swift */,
+				020202020000000100000002 /* SolarMath.swift */,
+				020202020000000100000013 /* HapticService.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		040404040000000000000002 /* SolX */ = {
+			isa = PBXGroup;
+			children = (
+				020202020000000100000003 /* SolXApp.swift */,
+				020202020000000100000004 /* SolarEphemerisEngine.swift */,
+				020202020000000100000005 /* LocationManager.swift */,
+				020202020000000100000006 /* CameraService.swift */,
+				020202020000000100000007 /* ThemeManager.swift */,
+				020202020000000100000008 /* MainCameraView.swift */,
+				020202020000000100000009 /* SunAngleCompassCard.swift */,
+				02020202000000010000000A /* EphemerisTimelineCard.swift */,
+				02020202000000010000000B /* CameraControlsToolbar.swift */,
+				02020202000000010000000C /* CameraViewfinderRepresentable.swift */,
+				02020202000000010000000D /* CompositionGridView.swift */,
+				02020202000000010000000E /* SolarTrajectoryMapView.swift */,
+				02020202000000010000000F /* SettingsSheetView.swift */,
+				020202020000000100000010 /* iPadLayoutView.swift */,
+				020202020000000100000011 /* Assets.xcassets */,
+				020202020000000100000012 /* Info.plist */,
+			);
+			path = SolX;
+			sourceTree = "<group>";
+		};
+		040404040000000000000003 /* SolXWidget */ = {
+			isa = PBXGroup;
+			children = (
+				020202020000000200000001 /* SolXWidgetBundle.swift */,
+				020202020000000200000002 /* SolXCountdownWidget.swift */,
+				020202020000000200000003 /* WidgetViews.swift */,
+				020202020000000200000004 /* Info.plist */,
+			);
+			path = SolXWidget;
+			sourceTree = "<group>";
+		};
+		040404040000000000000004 /* SolXWatch */ = {
+			isa = PBXGroup;
+			children = (
+				020202020000000300000001 /* SolXWatchApp.swift */,
+				020202020000000300000002 /* WatchMainView.swift */,
+				020202020000000300000003 /* WatchComplications.swift */,
+				020202020000000300000004 /* Assets.xcassets */,
+				020202020000000300000005 /* Info.plist */,
+			);
+			path = SolXWatch;
+			sourceTree = "<group>";
+		};
+		040404040000000000000005 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				020202020000000000000001 /* SolX.app */,
+				020202020000000000000002 /* SolXWidgetExtension.appex */,
+				020202020000000000000003 /* SolXWatch.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		050505050000000100000000 /* SolX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 070707070000000100000000 /* Build configuration list for PBXNativeTarget "SolX" */;
+			buildPhases = (
+				060606060000000100000000 /* Sources */,
+				030303030000000100000000 /* Frameworks */,
+				080808080000000100000000 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SolX;
+			productName = SolX;
+			productReference = 020202020000000000000001 /* SolX.app */;
+			productType = "com.apple.product-type.application";
+		};
+		050505050000000200000000 /* SolXWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 070707070000000200000000 /* Build configuration list for PBXNativeTarget "SolXWidget" */;
+			buildPhases = (
+				060606060000000200000000 /* Sources */,
+				030303030000000200000000 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SolXWidget;
+			productName = SolXWidget;
+			productReference = 020202020000000000000002 /* SolXWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		050505050000000300000000 /* SolXWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 070707070000000300000000 /* Build configuration list for PBXNativeTarget "SolXWatch" */;
+			buildPhases = (
+				060606060000000300000000 /* Sources */,
+				030303030000000300000000 /* Frameworks */,
+				080808080000000300000000 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SolXWatch;
+			productName = SolXWatch;
+			productReference = 020202020000000000000003 /* SolXWatch.app */;
+			productType = "com.apple.product-type.application.watchapp";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		090909090000000000000000 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					050505050000000100000000 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					050505050000000200000000 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					050505050000000300000000 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+				};
+			};
+			buildConfigurationList = 070707070000000000000000 /* Build configuration list for PBXProject "SolX" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 040404040000000000000000 /* Main Group */;
+			productRefGroup = 040404040000000000000005 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				050505050000000100000000 /* SolX */,
+				050505050000000200000000 /* SolXWidget */,
+				050505050000000300000000 /* SolXWatch */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		080808080000000100000000 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				010101010000000100000011 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		080808080000000300000000 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				010101010000000300000006 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		060606060000000100000000 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				010101010000000100000001 /* SolarModels.swift in Sources */,
+				010101010000000100000002 /* SolarMath.swift in Sources */,
+				010101010000000100000012 /* HapticService.swift in Sources */,
+				010101010000000100000003 /* SolXApp.swift in Sources */,
+				010101010000000100000004 /* SolarEphemerisEngine.swift in Sources */,
+				010101010000000100000005 /* LocationManager.swift in Sources */,
+				010101010000000100000006 /* CameraService.swift in Sources */,
+				010101010000000100000007 /* ThemeManager.swift in Sources */,
+				010101010000000100000008 /* MainCameraView.swift in Sources */,
+				010101010000000100000009 /* SunAngleCompassCard.swift in Sources */,
+				01010101000000010000000A /* EphemerisTimelineCard.swift in Sources */,
+				01010101000000010000000B /* CameraControlsToolbar.swift in Sources */,
+				01010101000000010000000C /* CameraViewfinderRepresentable.swift in Sources */,
+				01010101000000010000000D /* CompositionGridView.swift in Sources */,
+				01010101000000010000000E /* SolarTrajectoryMapView.swift in Sources */,
+				01010101000000010000000F /* SettingsSheetView.swift in Sources */,
+				010101010000000100000010 /* iPadLayoutView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		060606060000000200000000 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				010101010000000200000001 /* SolarModels.swift in Sources */,
+				010101010000000200000002 /* SolarMath.swift in Sources */,
+				010101010000000200000003 /* SolXWidgetBundle.swift in Sources */,
+				010101010000000200000004 /* SolXCountdownWidget.swift in Sources */,
+				010101010000000200000005 /* WidgetViews.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		060606060000000300000000 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				010101010000000300000001 /* SolarModels.swift in Sources */,
+				010101010000000300000002 /* SolarMath.swift in Sources */,
+				010101010000000300000003 /* SolXWatchApp.swift in Sources */,
+				010101010000000300000004 /* WatchMainView.swift in Sources */,
+				010101010000000300000005 /* WatchComplications.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		070707070000000000000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		070707070000000000000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		070707070000000100000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = SolX/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.midlaj.SolX;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		070707070000000100000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = SolX/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.midlaj.SolX;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		070707070000000200000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = SolXWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.midlaj.SolX.Widget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		070707070000000200000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = SolXWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.midlaj.SolX.Widget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		070707070000000300000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = SolXWatch/Info.plist;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.midlaj.SolX.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Debug;
+		};
+		070707070000000300000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = SolXWatch/Info.plist;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.midlaj.SolX.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		070707070000000000000000 /* Build configuration list for PBXProject "SolX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				070707070000000000000001 /* Debug */,
+				070707070000000000000002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		070707070000000100000000 /* Build configuration list for PBXNativeTarget "SolX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				070707070000000100000001 /* Debug */,
+				070707070000000100000002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		070707070000000200000000 /* Build configuration list for PBXNativeTarget "SolXWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				070707070000000200000001 /* Debug */,
+				070707070000000200000002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		070707070000000300000000 /* Build configuration list for PBXNativeTarget "SolXWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				070707070000000300000001 /* Debug */,
+				070707070000000300000002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+	};
+	rootObject = 090909090000000000000000 /* Project object */;
+}
