@@ -10,7 +10,7 @@
 **SolX** is a high-precision astronomical companion engineered specifically for outdoor landscape photographers, cinematographers, and visual artists. Natural golden hour lighting lasts only a fleeting 15–25 minutes each morning and evening. SolX eliminates the guesswork by computing exact solar ephemeris angles, sun azimuth compass trajectories, and down-to-the-second countdowns to peak lighting directly on-device.
 
 ### 🎯 Key Highlights
-- **Exact Portfolio Visual Replication**: Faithfully matches the interface layout, frosted glass cards, and glowing solar dials from the official SolX showcase mockup (`solx_preview.jpg`).
+- **Born From a Real Photography Problem**: Built for a photographer friend who shared the frustration of missing fleeting 15–20 minute golden-hour lighting windows on remote outdoor shoots. SolX was engineered as the direct solution—putting real-time solar elevation angles, azimuth compass bearings, and precision countdowns right in the viewfinder.
 - **±0.01° Solar Ephemeris Engine**: Rigorous spherical trigonometry based on NOAA solar position algorithms, operating 100% offline with zero cloud dependency for remote expeditions.
 - **Theme Switcher**: Complete support for both **Liquid Dark Glass** (ambient sunset atmosphere) and **Crystal Light Glass** (high-contrast daylight mode) with a toggle switch.
 - **WidgetKit Extension**: Real-time relative countdown widgets for iOS and iPadOS Home Screens and Lock Screens (`systemSmall`, `systemMedium`, `systemLarge`, `accessoryCircular`, `accessoryRectangular`, `accessoryInline`).
